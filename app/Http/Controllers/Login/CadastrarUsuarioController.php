@@ -28,7 +28,6 @@ class CadastrarUsuarioController extends Controller
 
             $return = [
                 'access_token' => $user->createToken('API')->plainTextToken,
-                'name' => $user->name
             ];
 
             return response()->json([
