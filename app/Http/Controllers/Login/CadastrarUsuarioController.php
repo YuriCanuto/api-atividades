@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Login;
 use App\Http\Controllers\Controller;
 use App\Http\Validators\Autenticacao\CadastroUsuarioValidator;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
@@ -14,7 +15,7 @@ class CadastrarUsuarioController extends Controller
 {
     public function __invoke(
         Request $request
-    ) {
+    ): JsonResponse {
 
         app(CadastroUsuarioValidator::class)->validated($request->input());
 

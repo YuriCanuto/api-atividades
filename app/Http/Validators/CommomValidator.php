@@ -5,18 +5,13 @@ namespace App\Http\Validators;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
-class CommomValidator
+abstract class CommomValidator
 {
-    public function __construct(
-        public array $rules = []
-    )
-    { }
+    abstract public function rules(): array;
 
     public function validate(array $request)
     {
-        $validator = Validator::make($request, $this->rules);
-
-        dd($validator);
+        $validator = Validator::make($request, $this->rules());
 
         if ($validator->fails()) {
             throw ValidationException::withMessages($validator->getMessageBag()->messages());
